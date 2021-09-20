@@ -108,7 +108,8 @@
     "DESCRIPTION_VUE": "This project is created to help other web developers create a basic VueJS app in an easy way.",
     "DESCRIPTION_API": "Demo is also linked to a Node.js express.js MongoDB JWT REST API project that shows how this frontend can be integrated to an API.",
     "API_DOCUMENTATION": "API documentation",
-    "FRONTEND_DOCUMENTATION": "Frontend documentation"
+    "FRONTEND_DOCUMENTATION": "Frontend documentation",
+    "BUTTON": "Humor me!"
   },
   "home": {
     "TITLE": "Protected Home",

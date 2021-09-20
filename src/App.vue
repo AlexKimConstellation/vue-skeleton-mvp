@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <Toolbar />
     <v-main class="text-center">
       <loading />
       <v-container fluid>
@@ -9,14 +8,11 @@
         </transition>
       </v-container>
     </v-main>
-    <Footer />
   </v-app>
 </template>
 
 <script>
-import Toolbar from '@/components/core/Toolbar.vue'
 import Loading from '@/components/core/Loading.vue'
-import Footer from '@/components/core/Footer.vue'
 
 export default {
   name: 'App',
@@ -60,9 +56,7 @@ export default {
     }
   },
   components: {
-    Toolbar,
-    Loading,
-    Footer
+    Loading
   },
   computed: {
     appTitle() {

@@ -1,49 +1,42 @@
 <template>
   <div>
-    <v-flex xs12 text-xs-center mt-5 mb-5>
-      {{ $t('landing.BUY_ME_A_COFFEE_DESCRIPTION') }}
+    <v-flex class="quote" xs12 text-xs-center mt-5 mb-5>
+      {{ this.quote }}
       <br />
       <br />
-      <a
-        class="bmc-button"
-        target="_blank"
-        href="https://www.buymeacoffee.com/muGHf41NT"
-      >
-        <img
-          src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
-          :alt="$t('landing.BUY_ME_A_COFFEE')"
-        />
-        <span style="margin-left: 5px">{{
-          $t('landing.BUY_ME_A_COFFEE')
-        }}</span>
-      </a>
-    </v-flex>
-
-    <v-flex xs12 text-xs-center mb-5>
-      {{ $t('landing.DESCRIPTION_VUE') }}
-      <br />
-      <br />
-      {{ $t('landing.FRONTEND_DOCUMENTATION') }}:
-      <a href="https://github.com/davellanedam/vue-skeleton-mvp"
-        >https://github.com/davellanedam/vue-skeleton-mvp</a
-      >
-    </v-flex>
-    <v-flex xs12>
-      {{ $t('landing.DESCRIPTION_API') }}
-      <br />
-      <br />
-      {{ $t('landing.API_DOCUMENTATION') }}:
-      <a
-        href="https://github.com/davellanedam/node-express-mongodb-jwt-rest-api-skeleton"
-        >https://github.com/davellanedam/node-express-mongodb-jwt-rest-api-skeleton</a
-      >
+      <button class="bmc-button" v-on:click="getChuckNorrisQuote()">
+        <span style="margin-left: 5px">{{ $t('landing.BUTTON') }}</span>
+      </button>
     </v-flex>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'ProjectDescription'
+  data() {
+    return {
+      quote: '',
+      errors: []
+    }
+  },
+
+  methods: {
+    // get Chuck Norris quote
+    getChuckNorrisQuote() {
+      axios
+        .get(`https://api.chucknorris.io/jokes/random`)
+        .then((response) => {
+          // JSON responses are automatically parsed.
+          console.log(response.data)
+          this.quote = response.data.value
+        })
+        .catch((e) => {
+          this.errors.push(e)
+        })
+    }
+  }
 }
 </script>
 
@@ -67,10 +60,10 @@ export default {
   border-radius: 3px !important;
   border: 1px solid transparent !important;
   padding: 1px 9px !important;
-  font-size: 22px !important;
+  font-size: 40px !important;
   letter-spacing: 0.6px !important;
   margin: 0 auto !important;
-  font-family: 'Cookie', cursive !important;
+  font-family: 'calibri' !important;
   -webkit-box-sizing: border-box !important;
   box-sizing: border-box !important;
   -o-transition: 0.3s all linear !important;
@@ -78,5 +71,10 @@ export default {
   -moz-transition: 0.3s all linear !important;
   -ms-transition: 0.3s all linear !important;
   transition: 0.3s all linear !important;
+}
+
+.quote {
+  font-size: 40px !important;
+  font-style: italic;
 }
 </style>
