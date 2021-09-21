@@ -29,7 +29,6 @@ export default {
         .get(`https://api.chucknorris.io/jokes/random`)
         .then((response) => {
           // JSON responses are automatically parsed.
-          console.log(response.data)
           this.quote = response.data.value
         })
         .catch((e) => {
@@ -43,7 +42,6 @@ export default {
         .get(`https://icanhazdadjoke.com/`, { Accept: 'application/json' })
         .then((response) => {
           // JSON responses are automatically parsed.
-          console.log(response.data)
           this.quote = response.data.value
         })
         .catch((e) => {
