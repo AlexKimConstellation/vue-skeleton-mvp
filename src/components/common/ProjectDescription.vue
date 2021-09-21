@@ -35,6 +35,20 @@ export default {
         .catch((e) => {
           this.errors.push(e)
         })
+    },
+
+    // get inspirational quote
+    getDadJoke() {
+      axios
+        .get(`https://icanhazdadjoke.com/`, { Accept: 'application/json' })
+        .then((response) => {
+          // JSON responses are automatically parsed.
+          console.log(response.data)
+          this.quote = response.data.value
+        })
+        .catch((e) => {
+          this.errors.push(e)
+        })
     }
   }
 }
